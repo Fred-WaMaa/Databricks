@@ -29,19 +29,28 @@ Analyse and explain current customer churn quantify churn, trends and the impact
  9.  Load data using Databricks Autoloader ( efficiently ingest millions of files from a cloud storage, and support efficient schema inference and evolution at scale both Jason and CVS files)
  10.  Creating "Bronze" Delta table
      
-        bronze_products = (spark.readStream
-                      .format("cloudFiles")
-                      .option("cloudFiles.format", data_format)
-                      .option("cloudFiles.inferColumnTypes", "true")
-                      .option("cloudFiles.schemaLocation",
-                              f"{deltaTablesDirectory}/schema/{table}") #Autoloader will automatically infer all the schema & evolution
-                      .load(folder))
-  return (bronze_products.writeStream
-            .option("checkpointLocation",
-                    f"{deltaTablesDirectory}/checkpoint/{table}") #exactly once delivery on Delta tables over restart/kill
-            .option("mergeSchema", "true") #merge any new column dynamically
-            .trigger(once = True) #Remove for real time streaming
-            .table(table)) #Table will be created if we haven't specified the schema first
+            bronze_products = (spark.readStream
+                          .format("cloudFiles")
+                          .option("cloudFiles.format", data_format)
+                          .option("cloudFiles.inferColumnTypes", "true")
+                          .option("cloudFiles.schemaLocation",
+                                  f"{deltaTablesDirectory}/schema/{table}") #Autoloader will automatically infer all the schema & evolution
+                          .load(folder))
+      return (bronze_products.writeStream
+                .option("checkpointLocation",
+                        f"{deltaTablesDirectory}/checkpoint/{table}") #exactly once delivery on Delta tables over restart/kill
+                .option("mergeSchema", "true") #merge any new column dynamically
+                .trigger(once = True) #Remove for real time streaming
+                .table(table)) #Table will be created if we haven't specified the schema first
+
+       ingest_folder(rawDataVolume + '/orders', 'json', 'churn_orders_bronze')
+       ingest_folder(rawDataVolume + '/events', 'csv', 'churn_app_events')
+       ingest_folder(rawDataVolume + '/users', 'json',  'churn_users_bronze').awaitTermination()
+
+
+
+
+     11. Read contents of Bronze table using spark %sql  select * from churn_users_bronze
 
 
 
