@@ -17,41 +17,19 @@ Analyse and explain current customer churn quantify churn, trends and the impact
 5. Load with Autoloader
    
  #### Data Engineering 
+
+
+
+
  1.  Build a Spark Data Pipeline with Delta Lake using notebooks
  2.  Configure cluster for note book
-    
-![](cluster.png)
-
- 5.  Check the volume Unity catalog (data governance)
- 6.  Read the jason raw data : display(spark.sql("SELECT * FROM json.`"+rawDataVolume+"/users`"))
- 7.  Read CSV into a dataframe : df = spark.read.option("header", "true").csv(rawDataVolume + "/events")
- 8.  Display using Spark SQL : display(spark.sql("SELECT * FROM eventsView"))
- 9.  Load data using Databricks Autoloader ( efficiently ingest millions of files from a cloud storage, and support efficient schema inference and evolution at scale both Jason and CVS files)
- 10.  Creating "Bronze" Delta table
-     
-            bronze_products = (spark.readStream
-                          .format("cloudFiles")
-                          .option("cloudFiles.format", data_format)
-                          .option("cloudFiles.inferColumnTypes", "true")
-                          .option("cloudFiles.schemaLocation",
-                                  f"{deltaTablesDirectory}/schema/{table}") #Autoloader will automatically infer all the schema & evolution
-                          .load(folder))
-      return (bronze_products.writeStream
-                .option("checkpointLocation",
-                        f"{deltaTablesDirectory}/checkpoint/{table}") #exactly once delivery on Delta tables over restart/kill
-                .option("mergeSchema", "true") #merge any new column dynamically
-                .trigger(once = True) #Remove for real time streaming
-                .table(table)) #Table will be created if we haven't specified the schema first
-
-       ingest_folder(rawDataVolume + '/orders', 'json', 'churn_orders_bronze')
-       ingest_folder(rawDataVolume + '/events', 'csv', 'churn_app_events')
-       ingest_folder(rawDataVolume + '/users', 'json',  'churn_users_bronze').awaitTermination()
-
-
-
-
-     11. Read contents of Bronze table using spark %sql  select * from churn_users_bronze
-     ![](bronze_table.png)
+ 3.  Check the volume Unity catalog (data governance)
+ 4.  Read the jason raw data : display(spark.sql("SELECT * FROM json.`"+rawDataVolume+"/users`"))
+ 5.  Read CSV into a dataframe : df = spark.read.option("header", "true").csv(rawDataVolume + "/events")
+ 6.  Display using Spark SQL : display(spark.sql("SELECT * FROM eventsView"))
+ 7.  Load data using Databricks Autoloader ( efficiently ingest millions of files from a cloud storage, and support efficient schema inference and evolution at scale both Jason and CVS files)
+ 8.  Creating "Bronze" Delta table using spark.readStream + writeStream. Read contents of Bronze table using spark %sql  select * from churn_users_bronze
+ 9.  Optimize the tables using (Z Order)
 
 
 
