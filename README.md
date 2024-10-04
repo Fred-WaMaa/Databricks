@@ -5,6 +5,8 @@ we are using Spark format, built on top of Spark API / SQL that allows ACID tran
 solve for smaller files. The goal here is to build a solution that reduces customers churn with Databricks Lakehouse. 
 Analyse and explain current customer churn quantify churn, trends and the impact for the business.
 
+## The Solution
+![](solution.png)
 #### Introduction - Raw Data
 1.  Ingest source data from  Customer profiles coming from our website, order details from our ERP system and mobile application clickstream to analyse our customers activity.
 2.  Secure data as table  and grant read access to the Data Analyst and Data Science teams.
@@ -14,6 +16,8 @@ Analyse and explain current customer churn quantify churn, trends and the impact
     eventsFolder = rawDataVolume + '/events'
 5. Load with Autoloader
    
- #### Data Engineering
- 1.  Build a Spark Data Pipeline with Delta Lake
- 2.  
+ #### Data Engineering 
+ 1.  Build a Spark Data Pipeline with Delta Lake using notebooks
+ 2.  Configure cluster for note book
+![](cluster.png)
+ 3.  Check the volume Unity catalog
