@@ -21,7 +21,7 @@ Analyse and explain current customer churn quantify churn, trends and the impact
  8.  Creating "Bronze" Delta table using spark.readStream + writeStream. Read contents of Bronze table using spark %sql  select * from churn_users_bronze
  9.  Optimize the tables using (Z Order)
 ### The Solution
-![](pipeling_dlt)
+![](pipeline_dlt.png)
 
 
 
