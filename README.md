@@ -51,7 +51,7 @@ Analyse and explain current customer churn quantify churn, trends and the impact
 
 
      11. Read contents of Bronze table using spark %sql  select * from churn_users_bronze
-
+     ![](bronze_table.png)
 
 
 
