@@ -30,7 +30,6 @@ solve for smaller files.
 #### The Solution
 ![](pipeline_dlt.png)
 
-##### Implement
   _**Databricks Lakehouse Platform - Databricks Workspace and Services- Delta Lake-  ETL with SPARK SQL - Multi-Hop Architecture- Delta Live Tables (DLT)- Orchestrating Jobs with Databricks**_
 
 
