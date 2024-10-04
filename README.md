@@ -8,11 +8,8 @@ Analyse and explain current customer churn quantify churn, trends and the impact
 1.  Ingest source data from  Customer profiles coming from our website, order details from our ERP system and mobile application clickstream to analyse our customers activity.
 2.  Secure data as table  and grant read access to the Data Analyst and Data Science teams.
 3.  Raw data includes Customer profile data, Orders history and events(streaming data)
-4.  ordersFolder = rawDataVolume + '/orders'
-    usersFolder = rawDataVolume + '/users'
-    eventsFolder = rawDataVolume + '/events'
-5. Load with Autoloader
-   
+4.  ordersFolder = rawDataVolume + '/orders'  usersFolder = rawDataVolume + '/users'    eventsFolder = rawDataVolume + '/events'
+5. Load with Autoloader   
  #### Data Engineering
  1.  Build a Spark Data Pipeline with Delta Lake using notebooks
  2.  Configure cluster for note book
