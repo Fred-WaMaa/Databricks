@@ -23,6 +23,8 @@ Analyse and explain current customer churn quantify churn, trends and the impact
  7.  Load data using Databricks Autoloader ( efficiently ingest millions of files from a cloud storage, and support efficient schema inference and evolution at scale both Jason and CVS files)
  8.  Creating "Bronze" Delta table using spark.readStream + writeStream. Read contents of Bronze table using spark %sql  select * from churn_users_bronze
  9.  Optimize the tables using (Z Order)
+### The Solution
+![](pipeling_dlt)
 
 
 
