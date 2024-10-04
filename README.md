@@ -1,10 +1,15 @@
 # Building a Spark Data pipeline with Delta Lake
-![](solution.png)
+
  Implementing a *medallion / multi-hop* architecture by using Delta Lake which is's a OSS standard that brings SQL Transactional database capabilities on top of parquet files.
 we are using Spark format, built on top of Spark API / SQL that allows ACID transactionns, DML operations,streaming and batch support,time travel and performance boots by Zordering to 
 solve for smaller files.
 
- _**The goal is to Ingesting, transforming and clean data. This will create clean SQL tables for our downstream user (Data Analysts and Data Scientists)**_
+![](solution.png)
+
+
+
+
+## _**The goal is to Ingest, transform and clean the data creating clean SQL tables for our downstream user (Data Analysts and Data Scientists)**_
  
 #### Introduction - Raw Data
 1.  Ingest source data from  Customer profiles coming from our website, order details from our ERP system and mobile application clickstream to analyse our customers activity.
@@ -25,7 +30,8 @@ solve for smaller files.
 #### The Solution
 ![](pipeline_dlt.png)
 
-
+##### Implement
+  _**Databricks Lakehouse Platform - Databricks Workspace and Services- Delta Lake-  ETL with SPARK SQL - Multi-Hop Architecture- Delta Live Tables (DLT)- Orchestrating Jobs with Databricks**_
 
 
 
